@@ -1,0 +1,88 @@
+{
+  "testimonials": [
+    {
+      "customer_name": "Aarav Sharma",
+      "location": "Delhi, India",
+      "rating": 5,
+      "feedback": "Leafnity is amazing! The plants arrived in perfect condition, and they look even better than I expected. The care instructions provided were very helpful. My home now feels so lively!",
+      "products_purchased": [
+        "Areca Palm",
+        "Snake Plant",
+        "Indoor Plant Care Kit"
+      ],
+      "date_of_purchase": "2025-01-15"
+    },
+    {
+      "customer_name": "Meera Patel",
+      "location": "Ahmedabad, India",
+      "rating": 5,
+      "feedback": "I am so happy with my purchase! The delivery was quick, and the packaging was excellent. The customer service team was also very supportive. Highly recommend Leafnity!",
+      "products_purchased": ["Money Plant", "Organic Fertilizer"],
+      "date_of_purchase": "2025-01-20"
+    },
+    {
+      "customer_name": "Kabir Verma",
+      "location": "Mumbai, India",
+      "rating": 4,
+      "feedback": "Great quality plants and reasonable pricing. I wish the delivery time was a little faster, but overall, I’m very satisfied!",
+      "products_purchased": ["Aloe Vera", "Ceramic Plant Pots"],
+      "date_of_purchase": "2025-01-10"
+    },
+    {
+      "customer_name": "Ananya Iyer",
+      "location": "Chennai, India",
+      "rating": 5,
+      "feedback": "The plants look so fresh and vibrant! I love how carefully they were packed. My balcony garden is thriving thanks to Leafnity.",
+      "products_purchased": ["Bamboo Palm", "Herb Starter Kit"],
+      "date_of_purchase": "2025-01-18"
+    },
+    {
+      "customer_name": "Ravi Singh",
+      "location": "Lucknow, India",
+      "rating": 4,
+      "feedback": "Good service and healthy plants. One plant had minor damage during transit, but customer support replaced it promptly. Will shop again!",
+      "products_purchased": ["Spider Plant", "Indoor Plant Care Kit"],
+      "date_of_purchase": "2025-01-12"
+    },
+    {
+      "customer_name": "Priya Kapoor",
+      "location": "Bangalore, India",
+      "rating": 5,
+      "feedback": "Excellent collection of indoor plants! The tips and instructions provided by Leafnity helped me a lot as a beginner. Highly recommended!",
+      "products_purchased": ["Fiddle Leaf Fig", "Neem Oil Spray"],
+      "date_of_purchase": "2025-01-22"
+    },
+    {
+      "customer_name": "Nikhil Gupta",
+      "location": "Jaipur, India",
+      "rating": 5,
+      "feedback": "Superb quality plants and timely delivery. The website is easy to use, and the product descriptions are accurate. Will definitely order more!",
+      "products_purchased": ["Peace Lily", "Organic Fertilizer"],
+      "date_of_purchase": "2025-01-08"
+    },
+    {
+      "customer_name": "Simran Kaur",
+      "location": "Amritsar, India",
+      "rating": 4,
+      "feedback": "Loved the plants and packaging. It would be even better if there were more plant variety for colder regions.",
+      "products_purchased": ["Rubber Plant", "Self-Watering Pots"],
+      "date_of_purchase": "2025-01-05"
+    },
+    {
+      "customer_name": "Aditya Malhotra",
+      "location": "Pune, India",
+      "rating": 5,
+      "feedback": "Leafnity has become my go-to place for plants. I appreciate their eco-friendly packaging and detailed care guides!",
+      "products_purchased": ["Boston Fern", "Plant Food"],
+      "date_of_purchase": "2025-01-11"
+    },
+    {
+      "customer_name": "Neha Joshi",
+      "location": "Hyderabad, India",
+      "rating": 5,
+      "feedback": "Fantastic experience! The plants are so healthy, and the pots I ordered are just gorgeous. My office desk looks amazing now.",
+      "products_purchased": ["Succulent Pack", "Decorative Ceramic Pots"],
+      "date_of_purchase": "2025-01-24"
+    }
+  ]
+}
