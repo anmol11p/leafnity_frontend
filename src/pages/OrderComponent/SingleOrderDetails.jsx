@@ -50,7 +50,7 @@ const SingleOrderDetails = ({ setIsInfoClick, selectedItem }) => {
     <section className="container mx-auto p-4 sm:p-8 md:p-12 my-10">
       <article className="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6 max-w-2xl mx-auto transition-all duration-300">
         <img
-          src={`/${image_src}`}
+          src={`./${image_src}`}
           alt={plant_name || "Plant"}
           className="w-52 h-52 object-cover rounded-xl shadow-md"
         />
