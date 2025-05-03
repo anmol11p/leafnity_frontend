@@ -55,6 +55,7 @@ const ContextApi = ({ children }) => {
     const fetchProducts = async () => {
       try {
         const productsResp = await getAllProducts();
+        // console.log(productsResp);
         if (productsResp.status === 200) {
           setProduct(productsResp.data);
         } else {
@@ -69,7 +70,6 @@ const ContextApi = ({ children }) => {
     fetchProducts();
   }, [token]);
 
-  // console.log(cart);
   return (
     <UserContext.Provider
       value={{

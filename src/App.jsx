@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./layout/AppLayout/AppLayout";
 import Product from "./pages/Product";
 import Cart from "./pages/cartComponent/Cart";
@@ -16,51 +16,52 @@ import Order from "./pages/Account/Order";
 import AllOrders from "./pages/AllOrders";
 import CustomerCare from "./pages/Account/CustomerCare";
 import ResetPassword from "./pages/ResetPassword";
+
 function App() {
-  const Router = createBrowserRouter([
+  const Router = createHashRouter([
     {
       path: "/",
       element: <AppLayout />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "/products",
+          path: "products",
           element: <Product />,
         },
         {
-          path: "/",
+          path: "",
           element: <Home />,
         },
         {
-          path: "/cart",
+          path: "cart",
           element: <Cart />,
         },
         {
-          path: "/login",
+          path: "login",
           element: <Login />,
         },
         {
-          path: "/reset-password/:token",
+          path: "reset-password/:token",
           element: <ResetPassword />,
         },
         {
-          path: "/orders",
+          path: "orders",
           element: <AllOrders />,
         },
         {
-          path: "/signup",
+          path: "signup",
           element: <SignUp />,
         },
         {
-          path: "/addresses",
+          path: "addresses",
           element: <Address />,
         },
         {
-          path: "/account",
+          path: "account",
           element: <AccountLayout />,
           children: [
             {
-              path: "/account",
+              path: "",
               element: <UserProfile />,
             },
             {
@@ -88,6 +89,7 @@ function App() {
       ],
     },
   ]);
+
   return <RouterProvider router={Router} />;
 }
 

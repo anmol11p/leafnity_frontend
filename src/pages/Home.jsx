@@ -160,7 +160,7 @@ const Home = () => {
           {/* Image */}
           <div className="md:w-1/2 flex justify-center">
             <img
-              src="/images/img-joinUssection.webp"
+              src="./images/img-joinUssection.webp"
               alt="Girl watering plants"
               className="w-full h-80 object-cover rounded-3xl shadow-lg hover:scale-105 transition-transform duration-500"
             />

@@ -19,7 +19,7 @@ const OrderCard = ({ item, handleToggle, loadingState, handleCancelOrder }) => {
             key={id}
           >
             <img
-              src={`/${image_src}`}
+              src={`./${image_src}`}
               alt={plant_name}
               className="w-32 h-32 object-cover rounded-md border"
             />
