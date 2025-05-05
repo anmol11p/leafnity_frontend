@@ -70,7 +70,7 @@ const Address = () => {
     if (shouldSaveAddress) {
       const saveAddress = async () => {
         const saveAddressInDb = await createAddress(token, addressData);
-
+        console.log(saveAddressInDb);
         if (saveAddressInDb.status === 400) {
           toast.error(saveAddressInDb.response.data.message);
         } else if (saveAddressInDb.status === 200) {

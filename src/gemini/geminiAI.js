@@ -1,5 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API });
+import axios from "axios";
 
 const aiResponse = async (prompt, data) => {
   try {
@@ -19,10 +18,14 @@ const aiResponse = async (prompt, data) => {
     AI:
     `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
-      contents: chatPrompt,
+    const api = "https://repromitra-backend.onrender.com";
+    const response = await axios.post(`${api}/gemini`, {
+      prompt,
+      chatBoatName: chatPrompt,
     });
+    if (response.status === 200) {
+      return response.data.message;
+    }
     return response.text;
   } catch (error) {
     console.error("AI Response Error:", error);

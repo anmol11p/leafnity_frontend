@@ -13,6 +13,7 @@ const CartCard = ({ item }) => {
       if (!cartItem) return;
       const quantity = type === "inc" ? 1 : -1;
       const resp = await addToCart({ plantId: id, quantity }, token);
+      console.log(resp);
       if (resp.status === 200) {
         const updatedCart = await getAllCartItems(token);
         if (updatedCart.status === 200) {

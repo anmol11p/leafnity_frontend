@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URI}cart`,
+  baseURL: `${import.meta.env.VITE_API_URI}/cart`,
 });
 
 const addToCart = async (userInput, token) => {

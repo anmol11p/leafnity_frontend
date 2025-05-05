@@ -17,9 +17,11 @@ const Address = () => {
   const [selectedAddress, setSelectedAddress] = useState({});
   const navigate = useNavigate();
 
+  // console.log(address);
   const handleDeleteAddress = async (id) => {
     try {
       const deleAddress = await DeleteAddress(token, id);
+      console.log(deleAddress);
       if (deleAddress.status === 200) {
         const updatedAddress = await getAddress(token);
         if (updatedAddress.status === 200) {
@@ -52,7 +54,7 @@ const Address = () => {
     }
   }, [token, navigate]);
 
-  if (address?.length === 0) {
+  if (address?.length === 0 || address === null) {
     return (
       <div className="flex justify-center items-center h-screen mt-10">
         <div className="text-center">

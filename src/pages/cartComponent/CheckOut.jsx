@@ -61,7 +61,7 @@ const CheckOut = () => {
                 totalAmount: amount,
                 addressId: selectedAddress,
               });
-
+              console.log(resp);
               if (resp.status === 200) {
                 const cart = await AllItemsClear(token);
                 if (cart.status === 200) {

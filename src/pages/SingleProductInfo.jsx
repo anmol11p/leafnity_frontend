@@ -122,13 +122,13 @@ const SingleProductInfo = ({ plantName, plantId }) => {
             const verify = await verifyPayment(token, response);
             if (verify?.data?.success && verify?.status === 200) {
               const items = [
-                { plantId: Number(plantId), quantity, totalAmount: totalMoney },
+                { plantId: plantId, quantity, totalAmount: totalMoney },
               ];
               const resp = await saveOrderToDB(token, {
                 items,
                 razorpayOrderId: paymentData?.order?.id,
                 totalAmount: totalMoney,
-                addressId: Number(selectedAddress),
+                addressId: selectedAddress,
               });
               if (resp.status === 200) {
                 const updateOrder = await getAllOrderItem(token);
