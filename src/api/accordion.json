@@ -1,25 +1,25 @@
 [
   {
     "id": 1,
-    "icon": "/images/leafinity/Accordion-img-1.png",
+    "icon": "./images/leafinity/Accordion-img-1.png",
     "title": "Water once a week",
     "description": "Always check your plants before watering, the topsoil should be dry to touch. For succulents allow the potting mix to dry completely before watering again."
   },
   {
     "id": 2,
-    "icon": "/images/leafinity/accordion-image-2.png",
+    "icon": "./images/leafinity/accordion-image-2.png",
     "title": "Needs bright indirect sunlight",
     "description": "Place your plants on window sills where it can get the brightest possible indirect light. Bright indirect light is when the plant is within a couple of feet of a natural source of light."
   },
   {
     "id": 3,
-    "icon": "/images/leafinity/accordion-image-3.png",
+    "icon": "./images/leafinity/accordion-image-3.png",
     "title": "Toxic to pets",
     "description": "The plant can cause anything from irritation to fatal damage to your pets on contact or ingestion. Prolonged exposure can result in long term side effects and death."
   },
   {
     "id": 4,
-    "icon": "/images/leafinity/accordion-image-4.png",
+    "icon": "./images/leafinity/accordion-image-4.png",
     "title": "Needs Gardening experience",
     "description": "The plant needs a knowing eye of a gardener to understand what it needs. Fairly easy to grow if you take care of their set of requirements."
   }
