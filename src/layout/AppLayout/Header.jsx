@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import React, { useContext, useState } from "react";
-import { Search, ShoppingCart } from "lucide-react";
+import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import Loader from "../../pages/Loader";
 import { CiUser } from "react-icons/ci";
 import { UserContext } from "../../context/ContextApi";
@@ -18,6 +18,7 @@ export const Header = () => {
   } = useContext(UserContext);
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const Active = ({ isActive }) =>
     isActive ? "text-green-600 font-bold" : "text-gray-700";
@@ -49,6 +50,9 @@ export const Header = () => {
     }
   };
 
+  const handleToggleMenu = () => setMobileMenuOpen((prev) => !prev);
+  const handleCloseMenu = () => setMobileMenuOpen(false);
+
   return (
     <>
       <header
@@ -57,7 +61,7 @@ export const Header = () => {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
-          {/* Logo Section */}
+          {/* Logo */}
           <NavLink
             className="text-2xl font-extrabold text-green-600 cursor-pointer"
             to={"/"}
@@ -65,7 +69,7 @@ export const Header = () => {
             Leafnity
           </NavLink>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <NavLink to="/" className={Active}>
               Home
@@ -99,9 +103,28 @@ export const Header = () => {
             </NavLink>
           </nav>
 
-          {/* Mobile Icons */}
+          {/* Mobile Hamburger Icon */}
           <div className="md:hidden flex items-center gap-4">
-            <NavLink to="/cart" className="relative">
+            <button onClick={handleToggleMenu}>
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white shadow-lg py-4 px-6 space-y-4 flex flex-col">
+            <NavLink to="/" className={Active} onClick={handleCloseMenu}>
+              Home
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={Active}
+              onClick={handleCloseMenu}
+            >
+              Products
+            </NavLink>
+            <NavLink to="/cart" className="relative" onClick={handleCloseMenu}>
               <ShoppingCart className="text-gray-700 hover:text-green-600 transition" />
               {cart?.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full px-2 py-0.5">
@@ -109,14 +132,28 @@ export const Header = () => {
                 </span>
               )}
             </NavLink>
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={inputValue}
+                onChange={handleOnchange}
+                disabled={isPending}
+                className="bg-gray-100 px-4 py-2 rounded-full pl-10 w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <div className="absolute left-3">
+                {searchLoading ? <Loader size={5} /> : <Search size={18} />}
+              </div>
+            </div>
             <NavLink
               to={token ? "/account" : "/login"}
-              className="text-gray-700 hover:text-green-600 transition"
+              className={Active}
+              onClick={handleCloseMenu}
             >
               <CiUser size={24} />
             </NavLink>
           </div>
-        </div>
+        )}
       </header>
     </>
   );
