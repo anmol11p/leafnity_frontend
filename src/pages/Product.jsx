@@ -1,88 +1,22 @@
-// import React, { useContext } from "react";
-// import { FaStar } from "react-icons/fa";
-// import { NavLink, useLocation } from "react-router-dom";
 import SingleProductInfo from "./SingleProductInfo";
-// import { UserContext } from "../context/ContextApi";
-// import Loader from "./Loader";
-
-// const Product = () => {
-//   const location = useLocation();
-//   const searchParams = new URLSearchParams(location.search);
-//   const plantName = searchParams.get("plantName");
-//   const plantId = searchParams.get("plantId");
-//   const { product, isPending, searchLoading, ErrorDataProduct } = useContext(UserContext);
-
-//   return (
-//     <>
-//       {plantName && plantId ? (
-//         <SingleProductInfo plantName={plantName} plantId={plantId} />
-//       ) : (
-//         <section className="section-product">
-//           <div className="container">
-//             <div className={`upperSection flex ${ErrorDataProduct ? "hidden" : ""}`}>
-//               {!ErrorDataProduct && (
-//                 <>
-//                   <h2 className="Heading">Explore Our Products</h2>
-//                   <p className="subHeading">Discover a variety of handpicked plants perfect for your garden passion.</p>
-//                 </>
-//               )}
-//             </div>
-
-//             {isPending || searchLoading ? (
-//               <div className="center"><Loader /></div>
-//             ) : (
-//               <ul className={`productContainer grid ${ErrorDataProduct ? "" : "grid--col-4"}`}>
-//                 {ErrorDataProduct ? (
-//                   <h2 className="center errorMessageProduct">{ErrorDataProduct.toUpperCase()}</h2>
-//                 ) : (
-//                   product?.map((item, index) => (
-//                     <li key={index} className="card flex">
-//                       <div className="imgSection">
-//                         <img src={item.image_src} alt={item.plant_name} />
-//                       </div>
-//                       <div className="product-info flex">
-//                         <h2 className="productName">{item.plant_name}</h2>
-//                         <div className="price flex">
-//                           <h2>₹{item.total_price}</h2>
-//                           <h3 className="selling-price">₹{item.selling_price}</h3>
-//                         </div>
-//                         <div className="rating">
-//                           {Array.from({ length: item.rating }, (_, i) => <FaStar key={i} />)}
-//                         </div>
-//                         <div className="button">
-//                           <NavLink to={`/products?plantName=${item.plant_name}&plantId=${item.id}`} className="btn-common">
-//                             View Product
-//                           </NavLink>
-//                         </div>
-//                       </div>
-//                     </li>
-//                   ))
-//                 )}
-//               </ul>
-//             )}
-//           </div>
-//         </section>
-//       )}
-//     </>
-//   );
-// };
-
-// export default Product;
 
 import React, { useContext } from "react";
 import { FaStar } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../context/ContextApi";
 import Loader from "./Loader";
-// import FooterApi from "../../api/footer.json";
-
 const Product = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const plantName = searchParams.get("plantName");
   const plantId = searchParams.get("plantId");
-  const { product, isPending, searchLoading, ErrorDataProduct } =
-    useContext(UserContext);
+  const {
+    product,
+    isPending,
+    searchLoading,
+    ErrorDataProduct,
+    productLoadAPI,
+  } = useContext(UserContext);
 
   return (
     <>
@@ -107,9 +41,9 @@ const Product = () => {
               )}
             </div>
 
-            {isPending || searchLoading ? (
+            {productLoadAPI || searchLoading ? (
               <div className="flex justify-center mt-8">
-                <Loader />
+                <Loader w={10} h={10} />
               </div>
             ) : (
               <ul

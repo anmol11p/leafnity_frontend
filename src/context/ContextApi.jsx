@@ -23,7 +23,7 @@ const ContextApi = ({ children }) => {
   const [isPending, startTransition] = useTransition();
   const [searchLoading, setSearchLoading] = useState(false);
   const [ErrorDataProduct, setErrorDataProduct] = useState("");
-
+  const [productLoadAPI, SetProductLoadApi] = useState(false);
   useEffect(() => {
     if (token) {
       startTransition(() => {
@@ -42,7 +42,6 @@ const ContextApi = ({ children }) => {
             if (addressResp.status === 200)
               setAddress(addressResp.data.address);
             if (orderResp.status === 200) setOrder(orderResp.data.details);
-            // if (productsResp.status === 200) setProduct(productsResp.data);
           } catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -54,6 +53,7 @@ const ContextApi = ({ children }) => {
 
     const fetchProducts = async () => {
       try {
+        SetProductLoadApi(true);
         const productsResp = await getAllProducts();
         if (productsResp.status === 200) {
           setProduct(productsResp.data);
@@ -63,13 +63,15 @@ const ContextApi = ({ children }) => {
       } catch (error) {
         console.error("Error fetching products:", error);
         setErrorDataProduct("Error fetching products");
+      } finally {
+        SetProductLoadApi(false);
       }
     };
 
     fetchProducts();
   }, [token]);
 
-  // console.log(cart);
+  console.log(productLoadAPI);
   return (
     <UserContext.Provider
       value={{
@@ -90,6 +92,7 @@ const ContextApi = ({ children }) => {
         setSearchLoading,
         ErrorDataProduct,
         setErrorDataProduct,
+        productLoadAPI,
       }}
     >
       {children}

@@ -1,103 +1,3 @@
-// import { NavLink, useNavigate } from "react-router-dom";
-// import React, { useContext, useState } from "react";
-// import { Search, ShoppingCart } from "lucide-react";
-// import Loader from "../../pages/Loader";
-// import { CiUser } from "react-icons/ci";
-// import { UserContext } from "../../context/ContextApi";
-// import { getSearchProduct } from "../../api/Products";
-
-// export const Header = () => {
-//   const {
-//     cart,
-//     token,
-//     setProduct,
-//     isPending,
-//     searchLoading,
-//     setSearchLoading,
-//     setErrorDataProduct,
-//   } = useContext(UserContext);
-//   const navigate = useNavigate();
-//   const [inputValue, setInputValue] = useState("");
-//   const Active = ({ isActive }) => (isActive ? "active" : "");
-
-//   const handleOnchange = async (e) => {
-//     let { value } = e.target;
-//     setInputValue(value);
-
-//     if (value.trim() === "") {
-//       setSearchLoading(false);
-//       setErrorDataProduct("");
-//       return;
-//     }
-
-//     try {
-//       setSearchLoading(true);
-//       const getSearchPlant = await getSearchProduct(value);
-//       if (getSearchPlant.status === 200) {
-//         setProduct(getSearchPlant.data.data);
-//         navigate(`/products`);
-//       }
-//       if (getSearchPlant.status === 404) {
-//         setErrorDataProduct(getSearchPlant.response.data.message);
-//       }
-//     } catch (error) {
-//       console.error(error);
-//     } finally {
-//       setSearchLoading(false);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <header
-//         className={`${isPending ? "opacity-50 pointer-events-none" : ""}`}
-//       >
-//         <div className="container">
-//           <div className="logoSection">
-//             <figure>Leafnity</figure>
-//           </div>
-
-//           <ul className="links-section">
-//             <li>
-//               <NavLink to="/" className={Active}>
-//                 Home
-//               </NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/products" className={Active}>
-//                 Products
-//               </NavLink>
-//             </li>
-//             <li className="cartButton">
-//               <NavLink to="/cart" className={Active}>
-//                 <ShoppingCart />
-//                 {cart?.length > 0 && <span>{cart.length}</span>}
-//               </NavLink>
-//             </li>
-//             <li>
-//               <span className={`search flex ${Active}`}>
-//                 <input
-//                   type="text"
-//                   placeholder="Search for plants, seeds and planters ..."
-//                   value={inputValue}
-//                   onChange={handleOnchange}
-//                   disabled={isPending}
-//                 />
-//                 {searchLoading ? <Loader /> : <Search size={18} />}
-//               </span>
-//             </li>
-//             <li className="loginIcon">
-//               <NavLink to={token ? "/account" : "/login"} className={Active}>
-//                 <CiUser />
-//               </NavLink>
-//             </li>
-//           </ul>
-//         </div>
-//       </header>
-//     </>
-//   );
-// };
-
 import { NavLink, useNavigate } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { Search, ShoppingCart } from "lucide-react";
@@ -158,9 +58,12 @@ export const Header = () => {
       >
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
           {/* Logo Section */}
-          <div className="text-2xl font-extrabold text-green-600 cursor-pointer">
+          <NavLink
+            className="text-2xl font-extrabold text-green-600 cursor-pointer"
+            to={"/"}
+          >
             Leafnity
-          </div>
+          </NavLink>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">
@@ -188,7 +91,11 @@ export const Header = () => {
                 className="bg-gray-100 px-4 py-2 rounded-full pl-10 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
               <div className="absolute left-3">
-                {searchLoading ? <Loader size={18} /> : <Search size={18} />}
+                {searchLoading ? (
+                  <Loader size={18} w={5} h={5} />
+                ) : (
+                  <Search size={18} />
+                )}
               </div>
             </div>
             <NavLink to={token ? "/account" : "/login"} className={Active}>
