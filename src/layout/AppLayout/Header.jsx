@@ -91,11 +91,7 @@ export const Header = () => {
                 className="bg-gray-100 px-4 py-2 rounded-full pl-10 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
               <div className="absolute left-3">
-                {searchLoading ? (
-                  <Loader size={18} w={5} h={5} />
-                ) : (
-                  <Search size={18} />
-                )}
+                {searchLoading ? <Loader size={5} /> : <Search size={18} />}
               </div>
             </div>
             <NavLink to={token ? "/account" : "/login"} className={Active}>

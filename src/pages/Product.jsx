@@ -42,8 +42,8 @@ const Product = () => {
             </div>
 
             {productLoadAPI || searchLoading ? (
-              <div className="flex justify-center mt-8">
-                <Loader w={10} h={10} />
+              <div className="mt-10">
+                <Loader size={15} />
               </div>
             ) : (
               <ul
