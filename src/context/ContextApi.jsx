@@ -10,6 +10,7 @@ import { getAllCartItems } from "../api/Carts";
 import { getAddress } from "../api/Adress";
 import { getAllOrderItem } from "../api/order";
 import { getAllProducts } from "../api/Products";
+import { jwtDecode } from "jwt-decode";
 
 const UserContext = createContext();
 
@@ -26,6 +27,12 @@ const ContextApi = ({ children }) => {
   const [productLoadAPI, SetProductLoadApi] = useState(false);
   useEffect(() => {
     if (token) {
+      const decoded = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      if (decoded.exp < currentTime) {
+        Cookies.remove("token");
+        setToken("");
+      }
       startTransition(() => {
         const fetchData = async () => {
           try {
@@ -71,7 +78,6 @@ const ContextApi = ({ children }) => {
     fetchProducts();
   }, [token]);
 
-  console.log(productLoadAPI);
   return (
     <UserContext.Provider
       value={{

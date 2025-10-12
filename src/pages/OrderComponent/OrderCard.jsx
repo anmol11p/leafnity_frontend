@@ -15,7 +15,7 @@ const OrderCard = ({ item, handleToggle, loadingState, handleCancelOrder }) => {
 
         return (
           <div
-            className="flex flex-col md:flex-row items-center gap-6 border-b pb-4 last:border-none"
+            className="flex flex-col md:flex-col items-center gap-6 border-b pb-4 last:border-none"
             key={id}
           >
             <img
@@ -37,7 +37,7 @@ const OrderCard = ({ item, handleToggle, loadingState, handleCancelOrder }) => {
                 })}
               </p>
 
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4 mt-4 ">
                 <button
                   onClick={() => handleToggle(id)}
                   className="px-4 py-2 cursor-pointer bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"

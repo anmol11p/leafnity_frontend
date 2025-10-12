@@ -8,11 +8,20 @@ const aiResponse = async (prompt, data) => {
     Here is some important customer data you can use:
     ${JSON.stringify(data, null, 2)}
 
-    - Use this data to answer customer queries.
-    - If the customer asks about an **order, cart, or product**, find relevant details from the provided data.
-    - If you don't find the requested information, politely ask the user to provide more details.
-    - Keep answers **clear, short, and user-friendly**.
+     🟢 RULES FOR RESPONSES:
+    - Always reply in **short, clear sentences**.
+    - Summarize multiple items using bullet points or line breaks.
+    - Never include extra details like order IDs, internal codes, or too much text.
+    - Show only the **product name, date, and price** — not full addresses or redundant "status: Ordered" info.
+    - Respond like a human customer support agent, not a system log.
+    - Do NOT use markdown (**bold**, *italic*, asterisks, etc.) — plain text only.
 
+   Example style:
+    "You’ve ordered:
+     - Snake Plant on July 23, 2025 – ₹902.5
+     - Aloe Vera on July 2, 2025 – ₹475
+     The May 2, 2025 order was refunded."
+     
     Now, respond to this customer question:
     User: ${prompt}
     AI:
@@ -24,7 +33,12 @@ const aiResponse = async (prompt, data) => {
       chatBoatName: chatPrompt,
     });
     if (response.status === 200) {
-      return response.data.message;
+      const cleaned = response.data.message
+        .replace(/\*\*/g, "") // remove bold markdown
+        .replace(/^\*\s*/gm, "") // remove list bullets
+        .replace(/[-_]{2,}/g, ""); // remove extra dashes or underscores
+
+      return cleaned.trim();
     }
     return response.text;
   } catch (error) {
